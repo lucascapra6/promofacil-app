@@ -1,0 +1,27 @@
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    //    "noUnusedLocals": true,
+    "baseUrl": "./",
+    "types": ["jest", "styled-components-react-native"],
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@api/*": ["src/api/*"],
+      "@assets/*": ["src/assets/*"],
+      "@screens/*": ["src/screens/*"],
+      "hooks/*": ["src/hooks/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@routes/*": ["src/routes/*"],
+      "@store/*": ["src/store/*"],
+      "themes/*": ["src/themes/*"],
+      "@utils/*": ["src/utils/*"],
+      "@reactQuery/*": ["src/reactQuery/*"]
+    }
+  }
+}
