@@ -6,6 +6,10 @@ import {Provider} from 'react-redux'
 import store from '@store/configureStore'
 import { QueryClientProvider} from 'react-query'
 import queryClient from "@reactQuery/config";
+import Reactotron from "reactotron-react-native";
+if(__DEV__) {
+    import('../reactotronConfig').then(() => console.log('Reactotron Configured'))
+}
 const App = () => {
   return (
     <Provider store={store}>
