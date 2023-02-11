@@ -1,6 +1,6 @@
 import ShoppingCartReducer from "@store/reducers/ShoppingCartReducer";
 
 const rootReducer = {
-    shoppingCartReducer: ShoppingCartReducer
+    shoppingCart: ShoppingCartReducer
 }
 export default rootReducer

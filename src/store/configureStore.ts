@@ -1,27 +1,30 @@
-import {applyMiddleware, combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
-import shoppingCardReducer from '@store/reducers/ShoppingCartReducer/index'
+import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import rootReducer from "@store/reducers/rootReducer";
-import reactotron from '../../reactotronConfig'
+import reactotron from "../../reactotronConfig";
+import ShoppingCartReducer from "@store/reducers/ShoppingCartReducer";
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
 }
-// @ts-ignore
-const createdEnhancer = reactotron.createEnhancer()
-// @ts-ignore
-let composed = applyMiddleware(thunk, createdEnhancer)
+const reactotronEnhancer =  reactotron.createEnhancer != null ? reactotron.createEnhancer() : null;
 
-const persistedReducer = persistReducer(persistConfig, shoppingCardReducer)
+const reducers = combineReducers(rootReducer)
+const persistedReducer = persistReducer(persistConfig, reducers)
+
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: [...getDefaultMiddleware(), thunk]
+  reducer: persistedReducer,
+  enhancers: reactotronEnhancer !== null ? [reactotronEnhancer] : undefined,
+  middleware: [thunk]
 })
+const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
-export default store
+
+export default () => {
+  return {store, persistor}
+}
