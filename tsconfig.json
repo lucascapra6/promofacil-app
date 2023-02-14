@@ -15,13 +15,13 @@
       "@api/*": ["src/api/*"],
       "@assets/*": ["src/assets/*"],
       "@screens/*": ["src/screens/*"],
-      "hooks/*": ["src/hooks/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@routes/*": ["src/routes/*"],
       "@store/*": ["src/store/*"],
       "themes/*": ["src/themes/*"],
       "@utils/*": ["src/utils/*"],
-      "@reactQuery/*": ["src/reactQuery/*"]
+      "@reactQuery/*": ["src/reactQuery/*"],
+      "hooks/*": ["src/hooks/*"]
     }
   }
 }

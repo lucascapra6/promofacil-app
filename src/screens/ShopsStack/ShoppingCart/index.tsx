@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {Dispatch, useEffect} from 'react'
 import Screen from '@components/Screen'
 import {FlatList, SectionList, StyleSheet, Text, View} from 'react-native'
 import Label from '@components/Label'
@@ -9,9 +9,9 @@ import {setItemsInShoppingCart} from '@store/actions/ShoppingCartActions'
 import Button from '@components/Button'
 import Colors from 'themes/Colors/colors'
 import Weights from 'themes/Fonts/weights'
-
+import {setInCart} from "@store/reducers/ShoppingCartReducer";
 const ShoppingCart = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<any>()
   useEffect(() => {
     dispatch(setItemsInShoppingCart(mock))
   }, [])

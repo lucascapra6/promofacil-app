@@ -9,12 +9,12 @@ module.exports = {
           '@screens': './src/screens',
           '@api': './src/api',
           '@assets': './src/assets',
-          '@hooks:': './src/hooks',
           '@routes': './src/routes',
           '@store': './src/store',
           themes: './src/themes',
           '@utils': './src/utils',
-          '@reactQuery': './src/reactQuery'
+          '@reactQuery': './src/reactQuery',
+          hooks: './src/hooks',
         }
       }
     ],

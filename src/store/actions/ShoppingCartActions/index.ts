@@ -1,6 +1,6 @@
 import {setInCart} from '@store/reducers/ShoppingCartReducer'
 import {Dispatch} from 'redux'
-
+import {AppDispatch, RootState} from '@store/configureStore'
 type Products = {
   id: string
   name: string
@@ -15,14 +15,6 @@ type ShoppingCardItems = {
   products: Array<Products>
 }[]
 
-const sleep = () => {
-  return new Promise((resolve: any) => {
-    setTimeout(resolve, 2000)
-  })
-}
-
-export const setItemsInShoppingCart =
-  (items: ShoppingCardItems) => async (dispatch: Dispatch) => {
-    // await sleep()
+export const setItemsInShoppingCart = (items: ShoppingCardItems | undefined) => async (dispatch: Dispatch) => {
     dispatch(setInCart(items))
-  }
+}
