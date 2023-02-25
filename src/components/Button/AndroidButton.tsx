@@ -9,7 +9,8 @@ type ButtonProps = {
   onPress?: () => void
   disabled?: boolean
   visible?: boolean
-  secondary?: boolean
+  secondary?: boolean,
+  testID?: string
 }
 
 export default function AndroidButton({
@@ -19,10 +20,10 @@ export default function AndroidButton({
   onPress,
   disabled = false,
   visible = true,
-  secondary = false
+  secondary = false,
 }: ButtonProps) {
   return visible ? (
-    <TouchableNativeFeedback onPress={onPress} disabled={disabled}>
+    <TouchableNativeFeedback testID="my-button" onPress={onPress} disabled={disabled}>
       <AndroidButtonStyled secondary={secondary} style={buttonStyle}>
         <ButtonText style={labelStyle}>{label}</ButtonText>
       </AndroidButtonStyled>

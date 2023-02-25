@@ -58,7 +58,7 @@ export default function Products() {
     <Screen>
       <FlatList
         ListHeaderComponent={() => (
-          <View style={{marginBottom: 20}}>
+          <View style={{marginBottom: 20}} data-testid="produtos">
             <Label size="large" color="black" fontWeight="bold">
               Produtos
             </Label>

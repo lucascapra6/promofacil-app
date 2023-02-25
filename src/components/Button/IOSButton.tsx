@@ -12,7 +12,8 @@ type ButtonType = {
   labelStyle?: object
   disabled?: boolean
   visible?: boolean
-  secondary?: boolean
+  secondary?: boolean,
+  testID?: string
 }
 const IosButton = ({
   onPress,
@@ -21,10 +22,11 @@ const IosButton = ({
   labelStyle = styles.text,
   label,
   visible,
-  secondary = false
+  secondary = false,
 }: ButtonType) => {
   return visible ? (
     <IosButtonStyled
+        testID="my-button"
       onPress={onPress}
       disabled={disabled}
       style={buttonStyle}
@@ -36,15 +38,6 @@ const IosButton = ({
   )
 }
 const styles = StyleSheet.create({
-  // button: {
-  //   marginTop: Spacing.normal,
-  //   alignSelf: 'center',
-  //   padding: Spacing.normal,
-  //   paddingRight: Spacing.large,
-  //   paddingLeft: Spacing.large,
-  //   borderRadius: 5,
-  //   backgroundColor: Colors.secondary
-  // },
   text: {
     fontSize: Sizes.medium,
     textTransform: 'uppercase',

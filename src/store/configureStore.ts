@@ -17,7 +17,7 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
   reducer: persistedReducer,
-  enhancers: reactotronEnhancer !== null ? [reactotronEnhancer] : undefined,
+  // enhancers: reactotronEnhancer !== null ? [reactotronEnhancer] : undefined,
   middleware: [thunk]
 })
 const persistor = persistStore(store)

@@ -11,6 +11,7 @@ type LabelType = {
   fontWeight?: 'normal' | 'bold'
   visible?: boolean
   style?: object
+    testID?:string
 }
 
 const Label = ({
@@ -19,10 +20,11 @@ const Label = ({
   color = 'black',
   fontWeight = 'normal',
   visible = true,
-  style
+  style,
 }: LabelType) => {
   return visible ? (
     <Text
+        testID="app-label"
       style={{
         fontSize: Sizes[size],
         color: Colors[color],

@@ -14,6 +14,7 @@ import useStoreData from "hooks/useStoreData";
 import useApiDataOfflineHandler from "hooks/useApiDataOfflineHandler";
 import IShops from "@interfaces/ApiResponses/ListShops";
 import {ISections} from "@interfaces/ApiResponses/ListSections";
+import Button from "@components/Button";
 const HomeScreen = () => {
     const {data, isLoading, isError, refetch, isFetching} = useFetchShopsQuery()
     const {shops} = useStoreData()
@@ -36,7 +37,7 @@ const HomeScreen = () => {
     if(!shopsData) return <Text>Error</Text>
   return (
     <Screen padding="normal">
-        <Label size="large" color="black" fontWeight="bold">
+        <Label testID="market-title" size="large" color="black" fontWeight="bold">
             Mercados
         </Label>
         <MarketingCard />

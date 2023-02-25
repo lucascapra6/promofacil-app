@@ -12,8 +12,7 @@ import MarketingCardContainer from '@screens/ShopsStack/HomeScreen/components/Ma
 import MarketingCardDescription from '@screens/ShopsStack/HomeScreen/components/MarketingCard/styles/marketingCardDescription'
 export default function MarketingCard() {
   type MarketsScreenRouteProp = StackNavigationProp<
-    RootStackParamList,
-    'MarketsHome'
+    RootStackParamList
   >
   const navigation = useNavigation<MarketsScreenRouteProp>()
   const [input, setInput] = useState<null | string | number>(null)

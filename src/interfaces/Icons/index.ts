@@ -10,7 +10,9 @@ interface IIcons {
   height?: number
   color: string
   onPress?: () => void
-  style?: object
+  style?: object,
+
+  testID?: string
 }
 
 export default IIcons

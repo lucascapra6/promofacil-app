@@ -52,6 +52,7 @@ const RootNavigator = () => {
                 icon={'CartIcon'}
                 height={30}
                 width={30}
+                testID="shoppingCart"
               />
             </HeaderButtonsContainer>
           )
