@@ -12,7 +12,8 @@ type ButtonType = {
   disabled?: boolean
   visible?: boolean
   secondary?: boolean,
-  testID?: string
+  testID?: string,
+  isAndroid?: boolean
 }
 const platform = new DevicePlatform()
 
@@ -24,9 +25,9 @@ const Button = ({
   disabled = false,
   visible = true,
   secondary,
-                  testID
+   isAndroid = platform.isAndroid()
 }: ButtonType) => {
-  return platform.isAndroid() ? (
+  return isAndroid ? (
     <AndroidButton
       label={label}
       buttonStyle={buttonStyle}
@@ -34,7 +35,7 @@ const Button = ({
       disabled={disabled}
       onPress={onPress}
       secondary={secondary}
-      testID={testID}
+      testID="android-button"
     />
   ) : (
     <IosButton
@@ -45,7 +46,7 @@ const Button = ({
       label={label}
       visible={visible}
       secondary={secondary}
-      testID={testID}
+      testID="ios-button"
     />
   )
 }
