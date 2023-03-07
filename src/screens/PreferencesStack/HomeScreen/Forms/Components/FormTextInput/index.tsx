@@ -10,6 +10,7 @@ interface FormTextInputProps extends TextInputProps {
   descriptionStyle?: object
   inputStyle?: object
   error?: boolean
+  testID?: string
 }
 
 const FormTextInput: FC<FormTextInputProps> = ({
@@ -18,10 +19,11 @@ const FormTextInput: FC<FormTextInputProps> = ({
   style,
   descriptionStyle,
   onChangeText,
-  error
+  error,
+    testID
 }) => {
   return (
-    <View style={{...styles.container, ...style}}>
+    <View style={{...styles.container, ...style}} testID={testID}>
       <Text style={{...styles.description, ...descriptionStyle}}>
         {description}
       </Text>

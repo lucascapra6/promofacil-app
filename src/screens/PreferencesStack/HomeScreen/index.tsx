@@ -7,11 +7,13 @@ import {useQuery, useMutation} from 'react-query'
 import axios from 'axios'
 import {Text} from 'react-native'
 import MarketsApi from "@api/Markets";
-
+interface HomeScreenProps {
+    accessibilityLabel?: string;
+}
 const HomeScreen = () => {
   return (
     <ScrollScreen>
-      <PersonalDataForm />
+      <PersonalDataForm/>
       <AdressForm />
       <Button
           onPress={() => {}}

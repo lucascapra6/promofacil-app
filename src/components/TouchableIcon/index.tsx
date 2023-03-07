@@ -8,12 +8,11 @@ const TouchableIcon = ({
   color,
   width = 40,
   height = 40,
-  onPress,
-    testID
+  onPress
 }: IIcons) => {
   const Icon = exportedIcons[icon]
   return (
-    <TouchableOpacity onPress={onPress} testID={testID}>
+    <TouchableOpacity onPress={onPress} testID="touchable-icon">
       <Icon color={color} width={width} height={height} />
     </TouchableOpacity>
   )

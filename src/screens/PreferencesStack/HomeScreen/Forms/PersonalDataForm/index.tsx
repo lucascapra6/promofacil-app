@@ -11,17 +11,18 @@ const PersonalDataForm = () => {
   const [email, setEmail] = useState<number | string | null>(null)
   const [phone, setPhone] = useState<number | string | null>(null)
   return (
-    <FormContainer>
-      <Label size={'large'} color={'black'}>
+    <FormContainer testID="personal-data-form">
+      <Label size={'large'} color={'black'} testID="personal-data-form-label">
         Informações pessoais
       </Label>
       <FormTextInput
+          testID="name-input"
         description={'Nome'}
         onChangeText={text => setName(text)}
       />
-      <FormTextInput description={'CPF'} keyboardType={'numeric'} />
-      <FormTextInput description={'E-mail'} keyboardType={'email-address'} />
-      <FormTextInput description={'Telefone'} keyboardType={'numeric'} />
+      <FormTextInput testID="cpf-input" description={'CPF'} keyboardType={'numeric'} />
+      <FormTextInput testID="email-input" description={'E-mail'} keyboardType={'email-address'} />
+      <FormTextInput testID="phone-input" description={'Telefone'} keyboardType={'numeric'} />
     </FormContainer>
   )
 }

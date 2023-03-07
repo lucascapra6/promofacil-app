@@ -11,6 +11,7 @@ type ViewContainerType = {
 const ScrollScreen = ({children, padding = 'normal'}: ViewContainerType) => {
   return (
     <ScrollView
+        testID="scroll-screen"
       showsVerticalScrollIndicator={false}
       style={[styles.viewContaier, {padding: Spacing[padding]}]}>
       {children}

@@ -12,7 +12,7 @@ const ViewableIcon = ({
 }: IIcons) => {
   const Icon = exportedIcons[icon]
   return (
-    <View style={style}>
+    <View style={style} testID="viewable-icon">
       <Icon color={color} width={width} height={height} />
     </View>
   )
