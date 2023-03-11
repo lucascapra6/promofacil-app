@@ -6,7 +6,7 @@ import AndroidButton from '@components/Button/AndroidButton'
 import IosButton from '@components/Button/IOSButton'
 type ButtonType = {
   label: string
-  onPress: () => void
+  onPress: (...args: any[]) => void;
   buttonStyle?: object
   labelStyle?: object
   disabled?: boolean

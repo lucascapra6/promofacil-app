@@ -1,6 +1,8 @@
 import HomeScreen from "@screens/PreferencesStack/HomeScreen";
-import {render} from "@testing-library/react-native";
+import {fireEvent, render} from "@testing-library/react-native";
 import PersonalDataForm from "@screens/PreferencesStack/HomeScreen/Forms/PersonalDataForm";
+import {createRef} from "react";
+import SavePreferencesButton from "@screens/PreferencesStack/components/SavePreferencesButton";
 
 describe('screens/preferences/HomeScreen', () => {
     it('renders correctly', () => {
@@ -18,7 +20,7 @@ describe('screens/preferences/HomeScreen', () => {
         expect(personalDataForm?.children).toHaveLength(5)
     })
     it('PersonalDataForm has the correct Label description', () => {
-        const {queryByTestId}= render(<HomeScreen/>)
+        const {queryByTestId, getByText}= render(<HomeScreen/>)
         const personalDataFormLabel = queryByTestId('personal-data-form-label')
         expect(personalDataFormLabel?.props.children).toEqual('Informações pessoais')
     })
@@ -29,11 +31,19 @@ describe('screens/preferences/HomeScreen', () => {
         expect(personalDataFormNameInputDescription).toBe('Nome')
     })
     it('PersonalDataForm has the correct cpf input config', () => {
-        const {queryByTestId}= render(<HomeScreen/>)
+        const {queryByTestId, debug}= render(<HomeScreen/>)
         const personalDataFormNameInput = queryByTestId('cpf-input')
         const personalDataFormNameInputDescription = personalDataFormNameInput?.props.children[0].props.children
         const personalDataFormNameTextInput = personalDataFormNameInput?.props.children[1]._owner.memoizedProps
         expect(personalDataFormNameInputDescription).toBe('CPF')
         expect(personalDataFormNameTextInput.keyboardType).toBe('numeric')
+    })
+    it('call "Salvar Preferencias" with correct props when the button is pressed', () => {
+        const onPressMock = jest.fn()
+        const {getByText, debug}= render(<SavePreferencesButton handlePress={onPressMock}/>)
+        const savePreferencesButton = getByText('Salvar Preferências')
+        fireEvent.press(savePreferencesButton)
+        expect(onPressMock).toBeCalledWith('lucas', 123456789)
+        debug()
     })
 })
