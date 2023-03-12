@@ -13,7 +13,10 @@ import {setShopsAction} from "@store/actions/ShopsActions";
 import useStoreData from "hooks/useStoreData";
 import useApiDataOfflineHandler from "hooks/useApiDataOfflineHandler";
 import IShops from "@interfaces/ApiResponses/ListShops";
-const HomeScreen = () => {
+type defaultProps = {
+   useCachedData?: boolean
+}
+const HomeScreen = ({useCachedData}: defaultProps) => {
     const {data, isLoading, isError, refetch, isFetching} = useFetchShopsQuery()
     const {shops} = useStoreData()
     const shopsData = useApiDataOfflineHandler<IShops[]>(data, shops, isError)
@@ -31,9 +34,13 @@ const HomeScreen = () => {
             dispatch(setShopsAction(data))
         }
     },[data])
-
-    // if(isLoading) return <ShopsSkeletonLoading isLoading={isLoading}/>
-    // if(!shopsData) return <Text>Error</Text>
+    const hasShopsData = Boolean(shopsData)
+    if(isLoading) return <ShopsSkeletonLoading isLoading={isLoading}/>
+    if(useCachedData) {
+        if(!hasShopsData) return <Text>Error - não ha dados salvos previamente</Text>
+    } else {
+        if(isError) return <Text>Error - falha na requisicao</Text>
+    }
   return (
     <Screen padding="normal">
         <Label testID="screen-title" size="large" color="black" fontWeight="bold">
@@ -41,7 +48,7 @@ const HomeScreen = () => {
         </Label>
         <MarketingCard />
         <FlatList
-            data={shopsData}
+            data={shopsData || []}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => <ShopCard imageUri={item.image.path} name={item.name}/>}
         />

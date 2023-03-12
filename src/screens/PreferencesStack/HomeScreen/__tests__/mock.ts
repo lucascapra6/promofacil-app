@@ -1,0 +1,41 @@
+import IShops from "@interfaces/ApiResponses/ListShops";
+export const mockShops: IShops[] = [
+    {
+        id: 1,
+        name: "Minha Loja",
+        contactPhone: "(11) 1234-5678",
+        startHour: "09:00",
+        endHour: "18:00",
+        createdAt: "2022-01-01T00:00:00Z",
+        updatedAt: "2022-01-02T00:00:00Z",
+        deletedAt: null,
+        image_id: 1,
+        image: {
+            id: 1,
+            path: "https://example.com/image.jpg",
+            resized_path: null,
+            createdAt: "2022-01-01T00:00:00Z",
+            updatedAt: "2022-01-01T00:00:00Z",
+            deletedAt: null,
+        },
+    },
+    {
+        id: 2,
+        name: "Minha Outra Loja",
+        contactPhone: "(11) 9876-5432",
+        startHour: "10:00",
+        endHour: "19:00",
+        createdAt: "2022-01-01T00:00:00Z",
+        updatedAt: "2022-01-02T00:00:00Z",
+        deletedAt: null,
+        image_id: 2,
+        image: {
+            id: 2,
+            path: "https://example.com/another-image.jpg",
+            resized_path: null,
+            createdAt: "2022-01-01T00:00:00Z",
+            updatedAt: "2022-01-01T00:00:00Z",
+            deletedAt: null,
+        },
+    },
+];

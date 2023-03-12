@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import HomeScreen from '@screens/ShopsStack/HomeScreen'
 import Products from '@screens/ShopsStack/Products'
 import Sections from '@screens/ShopsStack/Sections'
 import Colors from 'themes/Colors/colors'
 import ShoppingCart from '@screens/ShopsStack/ShoppingCart'
+import {useFetchShopsQuery} from "@reactQuery/hookQuerys/shops/useFetchShopsQuery";
 const ShopsStack = () => {
   type RootStackParamList = {
     MarketsHome: undefined
@@ -12,14 +13,13 @@ const ShopsStack = () => {
     Sections: undefined
     ShoppingCart: undefined
   }
-
   const Stack = createStackNavigator<RootStackParamList>()
   return (
     <Stack.Navigator>
       {/*<Stack.Screen name="SplashScreen" />*/}
       <Stack.Screen
         name="MarketsHome"
-        component={HomeScreen}
+        component={() => <HomeScreen useCachedData={true}/>}
         options={{headerTitle: 'Mercados', headerShown: false}}
       />
       <Stack.Screen
