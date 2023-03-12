@@ -13,8 +13,6 @@ import {setShopsAction} from "@store/actions/ShopsActions";
 import useStoreData from "hooks/useStoreData";
 import useApiDataOfflineHandler from "hooks/useApiDataOfflineHandler";
 import IShops from "@interfaces/ApiResponses/ListShops";
-import {ISections} from "@interfaces/ApiResponses/ListSections";
-import Button from "@components/Button";
 const HomeScreen = () => {
     const {data, isLoading, isError, refetch, isFetching} = useFetchShopsQuery()
     const {shops} = useStoreData()
@@ -33,11 +31,12 @@ const HomeScreen = () => {
             dispatch(setShopsAction(data))
         }
     },[data])
-    if(isLoading) return <ShopsSkeletonLoading isLoading={isLoading}/>
-    if(!shopsData) return <Text>Error</Text>
+
+    // if(isLoading) return <ShopsSkeletonLoading isLoading={isLoading}/>
+    // if(!shopsData) return <Text>Error</Text>
   return (
     <Screen padding="normal">
-        <Label testID="market-title" size="large" color="black" fontWeight="bold">
+        <Label testID="screen-title" size="large" color="black" fontWeight="bold">
             Mercados
         </Label>
         <MarketingCard />

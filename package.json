@@ -83,8 +83,14 @@
   },
   "jest": {
     "preset": "react-native",
+    "setupFiles": [
+      "./jestSetup/jestConfig.js"
+    ],
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!axios)/"
     ],
     "moduleFileExtensions": [
       "ts",

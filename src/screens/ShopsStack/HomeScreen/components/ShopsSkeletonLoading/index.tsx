@@ -8,7 +8,6 @@ interface IShopsSkeletonLoading extends ISkeletonContentProps {
     numberOfRenders: number
 }
 const ShopsSkeletonLoading = ({isLoading,...props}: ISkeletonContentProps) => {
-    const array = [1,2]
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <SkeletonContent

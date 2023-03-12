@@ -12,7 +12,6 @@ interface HomeScreenProps {
     accessibilityLabel?: string;
 }
 function handlePress(nome: string, cpf: number) {
-    console.log(nome, cpf)
     return {nome, cpf}
 }
 const HomeScreen = () => {
