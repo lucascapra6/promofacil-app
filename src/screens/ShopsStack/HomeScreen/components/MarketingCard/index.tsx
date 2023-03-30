@@ -15,6 +15,7 @@ export default function MarketingCard() {
     RootStackParamList
   >
   const navigation = useNavigation<MarketsScreenRouteProp>()
+
   const [input, setInput] = useState<null | string | number>(null)
   return (
     <MarketingCardContainer>

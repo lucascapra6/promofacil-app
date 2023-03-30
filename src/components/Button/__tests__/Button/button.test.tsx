@@ -1,18 +1,19 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react-native';
+import {render, fireEvent, screen, waitFor} from '@testing-library/react-native';
 import Button from "@components/Button";
 import AndroidButton from "@components/Button/AndroidButton";
 
 describe('Button', () => {
     const onPressMock = jest.fn();
     const buttonLabel = 'Teste'
-    test('should call onPress function when button is clicked', () => {
+    test('should call onPress function when button is clicked',  () => {
         const { getByTestId } = render(<Button onPress={onPressMock} testID="my-button" label={buttonLabel} />);
         const button = getByTestId('my-button');
 
         fireEvent.press(button);
+        fireEvent.press(button);
 
-        expect(onPressMock).toHaveBeenCalled();
+        expect(onPressMock).toBeCalledTimes(2);
     });
     test('is button component rendering the Android button', () => {
         const returnsTrue = () => true

@@ -1,5 +1,7 @@
 import 'react-native-gesture-handler/jestSetup'
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
+jest.useFakeTimers();
+export const mockedNavigation = jest.fn();
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 // jest.mock('react-native-skeleton-content-nonexpo', () => {
 //     return 'string'
@@ -7,7 +9,9 @@ jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 jest.mock('@react-navigation/native', () => {
     return {
         useFocusEffect: jest.fn(),
-        useNavigation: jest.fn()
+        useNavigation: () => ({
+            navigate: mockedNavigation,
+        }),
     }
 })
 

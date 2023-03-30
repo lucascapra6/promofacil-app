@@ -10,6 +10,12 @@ import Button from '@components/Button'
 import Colors from 'themes/Colors/colors'
 import Weights from 'themes/Fonts/weights'
 import {setInCart} from "@store/reducers/ShoppingCartReducer";
+
+export const useShoppingCartController = {
+  callFinishButton() {
+    console.log('entrou')
+  }
+}
 const ShoppingCart = () => {
   const dispatch = useDispatch<any>()
   useEffect(() => {
@@ -62,12 +68,13 @@ const ShoppingCart = () => {
   const {shoppingCardData} = useSelector(
     (state: RootState) => state.shoppingCart
   )
+
   return (
     <Screen>
       <FlatList
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={() => (
-          <Label size={'large'} fontWeight={'bold'}>
+          <Label size={'large'} fontWeight={'bold'} testID={'screen-title'}>
             Carrinho
           </Label>
         )}
@@ -87,7 +94,7 @@ const ShoppingCart = () => {
             buttonStyle={styles.button}
             labelStyle={styles.buttonLabelStyle}
             label={'FINALIZAR COMPRA'}
-            onPress={() => {}}
+            onPress={useShoppingCartController.callFinishButton}
           />
         )}
       />

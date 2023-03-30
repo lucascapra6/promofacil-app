@@ -11,7 +11,7 @@ type ProductsProps = {
   name: string
   unitPrice: string | number
   productImage: any
-  total: number
+  total: number,
 }
 
 const ProductsCard = ({name, unitPrice, productImage}: ProductsProps) => {

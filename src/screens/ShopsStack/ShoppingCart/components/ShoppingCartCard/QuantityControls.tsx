@@ -38,11 +38,11 @@ const QuantityControls = ({
   return (
     <View style={styles.container}>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity onPress={handleMinusButton}>
+        <TouchableOpacity onPress={handleMinusButton} testID="handleMinusButton">
           <Label size={'large'}>-</Label>
         </TouchableOpacity>
         <Label size={'medium'}>{quantity}</Label>
-        <TouchableOpacity onPress={handlePlusButton}>
+        <TouchableOpacity onPress={handlePlusButton} testID="handlePlusButton">
           <Label size={'large'}>+</Label>
         </TouchableOpacity>
       </View>

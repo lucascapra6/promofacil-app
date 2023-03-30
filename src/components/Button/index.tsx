@@ -25,7 +25,8 @@ const Button = ({
   disabled = false,
   visible = true,
   secondary,
-   isAndroid = platform.isAndroid()
+   isAndroid = platform.isAndroid(),
+    testID
 }: ButtonType) => {
   return isAndroid ? (
     <AndroidButton

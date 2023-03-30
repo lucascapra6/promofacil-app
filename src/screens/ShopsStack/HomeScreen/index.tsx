@@ -13,6 +13,7 @@ import {setShopsAction} from "@store/actions/ShopsActions";
 import useStoreData from "hooks/useStoreData";
 import useApiDataOfflineHandler from "hooks/useApiDataOfflineHandler";
 import IShops from "@interfaces/ApiResponses/ListShops";
+import ListShops from "@screens/ShopsStack/HomeScreen/components/ListShops";
 type defaultProps = {
    useCachedData?: boolean
 }
@@ -47,11 +48,7 @@ const HomeScreen = ({useCachedData}: defaultProps) => {
             Mercados
         </Label>
         <MarketingCard />
-        <FlatList
-            data={shopsData || []}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item}) => <ShopCard imageUri={item.image.path} name={item.name}/>}
-        />
+        <ListShops shopsData={shopsData || []}/>
     </Screen>
   )
 }

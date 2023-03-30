@@ -1,43 +1,42 @@
 import React from "react";
 import HomeScreen from "@screens/ShopsStack/HomeScreen";
-import {render} from "@testing-library/react-native";
-import App from "../../../../App";
-import {QueryClient, QueryClientProvider} from "react-query";
-import {Provider, shallowEqual} from 'react-redux'
-import configureStore from "@store/configureStore";
-import reduxStore from "@store/configureStore";
-import {NavigationContainer} from "@react-navigation/native";
-import {PersistGate} from "redux-persist/integration/react";
+import {fireEvent, screen} from "@testing-library/react-native";
+import {render} from "@utils/Test/test-utils";
 import MarketsApi from "@api/Markets";
-import AxiosClient from "@api/HttpClient";
-import {mockShops} from "@screens/PreferencesStack/HomeScreen/__tests__/mock";
-describe('screens/shops/HomeScreen', () => {
-    const queryClient = new QueryClient();
-    const {store, persistor} = reduxStore()
-    // @ts-ignore
-    const wrapper = ({ children }) => (
-        <Provider store={store}>
-            <PersistGate persistor={persistor}>
-                <QueryClientProvider client={queryClient}>
-                    {children}
-                </QueryClientProvider>
-            </PersistGate>
-        </Provider>
-    );
+import {mockShops} from "@screens/ShopsStack/HomeScreen/__tests__/mock";
+import MarketingCard from "@screens/ShopsStack/HomeScreen/components/MarketingCard";
+import {mockedNavigation} from "../../../../../jestSetup/jestConfig";
+import ListShops from "@screens/ShopsStack/HomeScreen/components/ListShops";
 
+describe('screens/shops/HomeScreen', () => {
+    const marketsApi = new MarketsApi()
+    beforeAll(() => {
+        jest.spyOn(marketsApi, 'listShops').mockResolvedValue(mockShops)
+    })
     it('renders correctly', () => {
-        render(<HomeScreen/>, {wrapper})
+        render(<HomeScreen/>)
     })
     it('renders with the correct screen title', () => {
-        const {queryByTestId, debug} = render(<HomeScreen useCachedData={false}/>, {wrapper})
-        const screenTitle = queryByTestId('screen-title')
+        render(<HomeScreen useCachedData={false}/>)
+        const screenTitle = screen.queryByTestId('screen-title')
         expect(screenTitle?.props.children).toBe('Mercados')
     })
     it('api list shops return an array of shops with correct signature', async () => {
-        const marketsApi = new MarketsApi()
-        const spyFn = jest.spyOn(marketsApi, 'listShops').mockResolvedValue(mockShops)
         const markets = await marketsApi.listShops()
         expect(markets).toMatchSnapshot()
-        expect(spyFn).toBeCalledTimes(1)
+    })
+    it('A market name was rendered on screen', async () => {
+        render(<ListShops shopsData={mockShops}/>)
+        expect(screen.getByText(mockShops[0].name)).toBeTruthy()
+    })
+    it('click on the "VER MAIS" button and navigate to Products screen', () => {
+        render(
+            <MarketingCard/>
+        )
+        const button = screen.queryByTestId('my-button')
+        if (button) {
+            fireEvent.press(button)
+        }
+        expect(mockedNavigation).toBeCalledWith('Products')
     })
 })

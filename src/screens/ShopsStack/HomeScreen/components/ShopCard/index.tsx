@@ -40,7 +40,7 @@ export default function ShopCard({imageUri, name}: ShopCard) {
           source={{uri: imageUri}}
         />
         <View>
-          <Label size={'large'} color={'black'}>
+          <Label size={'large'} color={'black'} testID='market-name'>
             {name}
           </Label>
           <Label size={'medium'} color={'black'}>

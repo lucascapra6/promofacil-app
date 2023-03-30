@@ -56,7 +56,7 @@ const ShoppingCartCard = ({
         showsVerticalScrollIndicator={false}
         data={products}
         keyExtractor={({id}) => id}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <ProductsCard
             productImage={item.productImage}
             name={item.name}
